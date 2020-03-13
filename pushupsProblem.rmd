@@ -55,6 +55,10 @@ a factor with levels **LINE**, **SKILL**: type of position played by the subject
   
 Variable analysis: You have position (factor) and number of pushups done in two minutes (numerical). What type of graphical display, numerical display and inferential test is appropriate?  
 
+position is categorical, pushups is numerical. so we use numerical ~ categorical 
+graphical: boxplot
+summary: data summary
+inference: t-test to compare means
 
 # Descriptive Results
 
@@ -71,8 +75,10 @@ Typically look at boxplots when considering numerical vs categorical data. Inser
 The two variables of interest are pushups and position. Boxplot graphical displays are good ways to depict data.  --> 
 
 ```{r}
-
+plot(pushups~position, data=players)
 ```
+  
+  The box plot for the skilled players is contained within more pushups done when compared to the line players. Skilled gravitates towards the 50's whereas line gravitates towards the 15's.
   
 <!-- be sire to tell what the boxplot shows -->
  
@@ -81,10 +87,10 @@ The two variables of interest are pushups and position. Boxplot graphical displa
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question -->
 
 ```{r}
-
+summary(players)
 ```
 
-
+Based on the summary, the skill contains 22 whereas the line contains 8, meaning that more pushups were done by skill players versus the line players.
 
 # Inferential Results
 
@@ -92,11 +98,14 @@ The two variables of interest are pushups and position. Boxplot graphical displa
 
 
 ```{r}
-
+t.test(pushups~position, data=players)
 ```
+
+this t-test shows that the mean between the line and skilled players is quantifiable. Not only that, but the p-value is below 0.05.
 
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason. -->
 
-
+the t-test to compare means, has a p-value of 0.0000009421
+this is less than 0.05, therefore we reject the null hypothesis, and conclude that we have evidencethat there is a difference in the average number of pushups that can be done in 2 minutes by line and skill players.
